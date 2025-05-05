@@ -13,8 +13,26 @@
 # -----------------------------------------------------------------------------
 
 read -p "Domain (e.g. example.com): " DOMAIN
+
+if [[ -z "$DOMAIN" ]]; then
+    echo "❌ Domain is required."
+    exit 1
+fi
+
 read -p "E-Mail for Let's Encrypt notifications: " EMAIL
+
+if [[ -z "$EMAIL" ]]; then
+    echo "❌ Email is required."
+    exit 1
+fi
+
 read -p "Username for the new user (e.g. exampleuser): " USERNAME
+
+if [[ -z "$USERNAME" ]]; then
+    echo "❌ Username is required."
+    exit 1
+fi
+
 read -p "Setup www.${DOMAIN} as alias? (y/n): " ADD_WWW
 
 DOCROOT="/var/www/${DOMAIN}"
