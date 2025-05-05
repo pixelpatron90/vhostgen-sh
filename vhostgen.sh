@@ -15,21 +15,27 @@
 read -p "Domain (e.g. example.com): " DOMAIN
 
 if [[ -z "$DOMAIN" ]]; then
+    echo "----------------------"
     echo "❌ Domain is required."
+    echo "----------------------"
     exit 1
 fi
 
 read -p "E-Mail for Let's Encrypt notifications: " EMAIL
 
 if [[ -z "$EMAIL" ]]; then
+    echo "---------------------"
     echo "❌ Email is required."
+    echo "---------------------"
     exit 1
 fi
 
 read -p "Username for the new user (e.g. exampleuser): " USERNAME
 
 if [[ -z "$USERNAME" ]]; then
+    echo "-------------------------"
     echo "❌ Username is required."
+    echo "-------------------------"
     exit 1
 fi
 
