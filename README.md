@@ -38,6 +38,23 @@ This Bash script automates the setup of a new Apache2 VirtualHost, complete with
 * Sets ownership and permissions for web and SFTP usage
 * User belongs to www-data group
 
+> [!TIP]
+> For later FTP access please read the note.
+
+**FTP Access tip**
+
+For FTP access to work, you must change the user's shell from /usr/sbin/nologin to /bin/false. This is required because the script currently sets the user's shell to /usr/sbin/nologin to prevent terminal access. To enable FTP, you can run the following command:
+
+```
+sudo chsh -s /bin/false username
+```
+
+Replace username with the actual username of the user. This will allow FTP access while still preventing terminal login.
+
+> [!TIP]
+> Additionally, make sure your FTP server (e.g. ProFTPD or vsftpd) is configured to allow logins only for users with /bin/false as their shell.
+> This ensures that only explicitly designated FTP users are allowed to connect, improving security.
+
 🛠️ **Apache configuration:**
 * Creates basic HTTP VirtualHost with automatic redirect to HTTPS
 * Enables rewrite and ssl modules
